@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.out"></param>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %d{MM-dd HH:mm:ss,SSS} %m  (%F:%L) \n" />
+		</layout>
+	</appender>
+
+	<!-- 输出日志到文件 -->
+	<appender name="fileAppender" class="org.apache.log4j.FileAppender">
+		<!-- 输出文件全路径名-->
+		<param name="File" value="c:/temp/fileAppender.log"/>
+		<!--是否在已存在的文件追加写：默认时true，若为false则每次启动都会删除并重新新建文件-->
+		<param name="Append" value="true"/>
+		<param name="Threshold" value="INFO"/>
+		<!--是否启用缓存，默认false-->
+		<param name="BufferedIO" value="false"/>
+		<!--缓存大小，依赖上一个参数(bufferedIO), 默认缓存大小8K  -->
+		<param name="BufferSize" value="512"/>
+		<!-- 日志输出格式 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p][%d{yyyy-MM-dd HH:mm:ss SSS}][%c]-[%m]%n"/>
+		</layout>
+	</appender>
+
+	<!--
+	<logger name="com.beck.util">
+		<level value="error" />
+
+	</logger>
+	-->
+	<root>
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="fileAppender" />
+	</root>
+</log4j:configuration>
