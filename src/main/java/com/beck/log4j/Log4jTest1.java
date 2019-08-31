@@ -8,5 +8,6 @@ public class Log4jTest1 {
     public static void main(String[] args) {
         logger.info("this is a info");
         logger.warn("this is a warning!");
+        logger.info("adfadadf");
     }
 }
